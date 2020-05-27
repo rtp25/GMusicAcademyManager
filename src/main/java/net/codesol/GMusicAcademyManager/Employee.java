@@ -1,5 +1,6 @@
 package net.codesol.GMusicAcademyManager;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "employee_type",
    discriminatorType = DiscriminatorType.INTEGER)
-public  class Employee {
+public abstract class Employee {
 	
 	
 	@Id
@@ -25,8 +26,6 @@ public  class Employee {
 	private String last_name;
 	private String ssn;
 	private float base_salary;
-	//private String instrument_taught_type;
-	private float comission_percentage;
 	//private static final String GeneratedType = null;
 	
 	
@@ -35,15 +34,13 @@ public  class Employee {
 		
 	}
 	
-	public Employee(Integer employee_id, String first_name, String last_name, String ssn, float base_salary, 
-			 float comission_percentage) {
+	public Employee(Integer employee_id, String first_name, String last_name, String ssn, float base_salary) {
 		this.employee_id = employee_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.ssn = ssn;
 		this.base_salary = base_salary;
-		//this.instrument_taught_type = instrument_taught_type;
-		this.comission_percentage = comission_percentage;
+
 	}
 
 	
@@ -87,23 +84,5 @@ public  class Employee {
 		this.base_salary = base_salary;
 	}
 
-	/*
-	public String getInstrument_taught_type() {
-		return instrument_taught_type;
-	}
-
-	public void setInstrument_taught_type(String instrument_taught_type) {
-		this.instrument_taught_type = instrument_taught_type;
-	}
-*/
-	public float getcomission_percentage() {
-		return comission_percentage;
-	}
-
-	public void setcomission_percentage(float comission_percentage) {
-		this.comission_percentage = comission_percentage;
-	}
 	
-	
-
 }

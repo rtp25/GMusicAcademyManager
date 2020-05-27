@@ -1,11 +1,13 @@
 package net.codesol.GMusicAcademyManager;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity 
 @DiscriminatorValue("1")
 public class Instructor extends Employee {
+	//@Column(name = "instrument_taught_type")
 	private String instrument_taught_type;
 
 	public Instructor() {
@@ -13,20 +15,22 @@ public class Instructor extends Employee {
 	}
 	
 	public Instructor(Integer instructorId, String firstName, String lastName, String ssn, float baseSalary, 
-			String instrumentTaughtType) {
-		super(instructorId, firstName, lastName, ssn, baseSalary, 0);
-		this.instrument_taught_type = instrumentTaughtType;
-		//super.setComission(0);
+			String instrument_taught_type) {
+		super(instructorId, firstName, lastName, ssn, baseSalary);
+		this.instrument_taught_type = instrument_taught_type;
+		//super.setcomission_percentage(0);
 	}
-	
-	
-	public String getInstrumentTaughtType() {
+
+	public String getInstrument_taught_type() {
 		return instrument_taught_type;
 	}
 
-	public void setInstrumentTaughtType(String instrumentTaughtType) {
-		this.instrument_taught_type = instrumentTaughtType;
+	public void setInstrument_taught_type(String instrument_taught_type) {
+		this.instrument_taught_type = instrument_taught_type;
 	}
+	
+	
+	
 	
 	
 
