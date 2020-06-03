@@ -44,7 +44,7 @@ public abstract class Employee {
 	}
 
 	
-	public Integer getemployee_id() {
+	public Integer getemployeed_id() {
 		return employee_id;
 	}
 

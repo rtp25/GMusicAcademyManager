@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SalesmanController {
-
-	@Autowired
-	private SalesmanService service;
+public class ItemController {
 	
-	@GetMapping("/salesmen")
-	public List<Salesman> list() {
-		return service.listAll();
+	@Autowired
+	private ItemService item_service;
+	
+	@GetMapping("/items")
+	public List<Item> list() {
+		return item_service.listAll();
 	}
 	
-	@GetMapping("/salesman/{salesman_id}")
-	public ResponseEntity<Salesman> get(@PathVariable Integer salesman_id) {
+	@GetMapping("/item/{item_id}")
+	public ResponseEntity<Item> get(@PathVariable Integer item_id) {
 		try {
-			Salesman salesman = service.get(salesman_id);
-			return new ResponseEntity<Salesman>(salesman, HttpStatus.OK);
+			Item item = item_service.get(item_id);
+			return new ResponseEntity<Item>(item, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Salesman>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
 		}
 		
 	}
 	
-	@PostMapping("/salesmen")
-	public void add(@RequestBody Salesman salesman) {
-		service.save(salesman);
+	@PostMapping("/items")
+	public void add(@RequestBody Item item) {
+		item_service.save(item);
 	}
 	
-	@PutMapping("/salesmen/{salesman_id}")
-	public ResponseEntity<?> update(@RequestBody Salesman salesman, @PathVariable Integer salesman_id) {
+	@PutMapping("/items/{item_id}")
+	public ResponseEntity<?> update(@RequestBody Item item, @PathVariable Integer item_id) {
 		try {
-			// maybe save the existsalesman instead
-			Salesman existSalesman = service.get(salesman_id);
-			service.save(salesman);
+			// maybe save the existitem instead
+			Item existItem = item_service.get(item_id);
+			item_service.save(item);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
 		} catch (NoSuchElementException e) {
@@ -55,9 +55,10 @@ public class SalesmanController {
 		
 	}
 	
-	@DeleteMapping("/salesmen/{salesman_id}")
-	public void delete(@PathVariable Integer salesman_id) {
-	    service.delete(salesman_id);
+	@DeleteMapping("/items/{item_id}")
+	public void delete(@PathVariable Integer item_id) {
+	    item_service.delete(item_id);
 	}
 	
+
 }

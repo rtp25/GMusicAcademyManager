@@ -7,9 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity 
-@DiscriminatorValue("1")
+@DiscriminatorValue("S")
 public class Student extends Customer{
-	private String instrumentTypeLearning;
+	private String instrument_type_learning;
 	
 	public Student() {
 		
@@ -17,15 +17,15 @@ public class Student extends Customer{
 	
 	public Student(Integer studentId, String firstName, String lastName, String phoneNumber, String intrumentTypeLearning) {
 		super(studentId, firstName, lastName, phoneNumber);
-		this.instrumentTypeLearning = intrumentTypeLearning;
+		this.instrument_type_learning = intrumentTypeLearning;
 	}
 
-	public String getInstrumentTypeLearning() {
-		return instrumentTypeLearning;
+	public String getinstrument_type_learning() {
+		return instrument_type_learning;
 	}
 
-	public void setInstrumentTypeLearning(String instrumentTypeLearning) {
-		this.instrumentTypeLearning = instrumentTypeLearning;
+	public void setinstrument_type_learning(String instrument_type_learning) {
+		this.instrument_type_learning = instrument_type_learning;
 	}
 	
 	

@@ -8,16 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "item")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "item_type",
-   discriminatorType = DiscriminatorType.INTEGER)
-public abstract class Item {
+   discriminatorType = DiscriminatorType.STRING)
+public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer itemId;
+	private Integer item_id;
 	private String name;
 	private String brand;
 	private float price;
@@ -27,20 +29,20 @@ public abstract class Item {
 		
 	}
 
-	public Item(Integer itemId, String name, String brand, float price, int quantity) {
-		this.itemId = itemId;
+	public Item(Integer item_id, String name, String brand, float price, int quantity) {
+		this.item_id = item_id;
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
-	public Integer getItemId() {
-		return itemId;
+	public Integer getitem_id() {
+		return item_id;
 	}
 
-	public void setItemId(Integer itemId) {
-		this.itemId = itemId;
+	public void setitem_id(Integer item_id) {
+		this.item_id = item_id;
 	}
 
 	public String getName() {
@@ -75,6 +77,9 @@ public abstract class Item {
 		this.quantity = quantity;
 	}
 	
+	public float getPriceFromId(int item_id) {
+		return this.item_id;
+	}
 	
 
 }
