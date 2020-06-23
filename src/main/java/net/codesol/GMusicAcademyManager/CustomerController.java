@@ -1,5 +1,6 @@
 package net.codesol.GMusicAcademyManager;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class CustomerController {
 	@Autowired
 	private CustomerService customer_service;
@@ -35,12 +38,12 @@ public class CustomerController {
 		
 	}
 	
-	@PostMapping("/customers")
+	@PostMapping("/customer")
 	public void add(@RequestBody Customer customer) {
 		customer_service.save(customer);
 	}
 	
-	@PutMapping("/customers/{customer_id}")
+	@PutMapping("/customer/{customer_id}")
 	public ResponseEntity<?> update(@RequestBody Customer customer, @PathVariable Integer customer_id) {
 		try {
 			// maybe save the existCustomer instead
@@ -54,7 +57,7 @@ public class CustomerController {
 		
 	}
 	
-	@DeleteMapping("/customers/{customer_id}")
+	@DeleteMapping("/customer/{customer_id}")
 	public void delete(@PathVariable Integer customer_id) {
 	    customer_service.delete(customer_id);
 	}
