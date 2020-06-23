@@ -36,3 +36,5 @@ This application is still currently in progress. Below are some (not all) of the
   - Add front-end REST functions for remainder of the database objects(Items, Employees, Sessions and Transactions)
   - Deploy to a remote server instead of hosting locally.
  
+ ## Author
+ - Rogelio Paniagua
