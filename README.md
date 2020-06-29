@@ -1,6 +1,6 @@
 # GMusicAcademyManager
 
-GMusicAcademyManager is a CRUD web application that helps keep track of the Item inventory, Customers, Employees, Sessions and Transactions of GMusic Academy. 
+GMusicAcademyManager is a CRUD web application that helps keep track of the Item inventory, Customers, Employees, Sessions and Transactions of GMusic Academy.
 
 ## Dependencies
 
@@ -19,7 +19,17 @@ You will need the following dependencies installed before you get started.
 The application builds with Maven, which is added on the pom.xml file, along with other essential dependencies previously added.
 
 ### Run
-To start the web server, simply run the GMusicAcademyManagerApplication.java file as a "Java Application" on the IDE.
+To start the web server, there are two options:
+
+1. Simply run the GMusicAcademyManagerApplication.java file as a "Java Application" on the IDE
+
+Or
+
+2. You can generate an executable jar file and run it on the command line with
+
+```
+java -jar GMusicAcademyManager-0.0.1-SNAPSHOT.jar
+```  
 
 Additionally, to start the Node.js developement server use the following command on the command line:
 
@@ -35,6 +45,6 @@ This application is still currently in progress. Below are some (not all) of the
   - Fix the PUT request on the client side for the Customers objects
   - Add front-end REST functions for remainder of the database objects(Items, Employees, Sessions and Transactions)
   - Deploy to a remote server instead of hosting locally.
- 
+
  ## Author
  - Rogelio Paniagua
