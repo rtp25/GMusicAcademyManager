@@ -10,6 +10,7 @@ public class GMusicAcademyManagerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GMusicAcademyManagerApplication.class, args);
+		
 	}
 
 }

@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class SessionController {
-	
+
 	@Autowired
 	private SessionService session_service;
-	
+
 	@GetMapping("/sessions")
 	public List<Session> list() {
 		return session_service.listAll();
 	}
-	
+
 	@GetMapping("/session/{session_id}")
 	public ResponseEntity<Session> get(@PathVariable Integer session_id) {
 		try {
@@ -35,32 +35,32 @@ public class SessionController {
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Session>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@PostMapping("/sessions")
+
+	@PostMapping("/session")
 	public void add(@RequestBody Session session) {
 		session_service.save(session);
 	}
-	
-	@PutMapping("/sessions/{session_id}")
+
+	@PutMapping("/session/{session_id}")
 	public ResponseEntity<?> update(@RequestBody Session session, @PathVariable Integer session_id) {
 		try {
 			// maybe save the existsession instead
 			Session existSession = session_service.get(session_id);
 			session_service.save(session);
 			return new ResponseEntity<>(HttpStatus.OK);
-			
+
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@DeleteMapping("/sessions/{session_id}")
+
+	@DeleteMapping("/session/{session_id}")
 	public void delete(@PathVariable Integer session_id) {
 	    session_service.delete(session_id);
 	}
-	
+
 
 }

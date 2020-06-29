@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService service;
-	
+
 	@GetMapping("/employees")
 	public List<Employee> list() {
 		return service.listAll();
 	}
-	
+
 	@GetMapping("/employee/{employee_id}")
 	public ResponseEntity<Employee> get(@PathVariable Integer employee_id) {
 		try {
@@ -35,32 +35,32 @@ public class EmployeeController {
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@PostMapping("/employees")
+
+	@PostMapping("/employee")
 	public void add(@RequestBody Employee employee) {
 		service.save(employee);
 	}
-	
-	@PutMapping("/employees/{employee_id}")
+
+	@PutMapping("/employee/{employee_id}")
 	public ResponseEntity<?> update(@RequestBody Employee employee, @PathVariable Integer employee_id) {
 		try {
 			// maybe save the existEmployee instead
 			Employee existEmployee = service.get(employee_id);
 			service.save(employee);
 			return new ResponseEntity<>(HttpStatus.OK);
-			
+
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@DeleteMapping("/employees/{employee_id}")
+
+	@DeleteMapping("/employee/{employee_id}")
 	public void delete(@PathVariable Integer employee_id) {
 	    service.delete(employee_id);
 	}
-	
+
 
 }

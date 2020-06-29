@@ -25,12 +25,12 @@ const Bdrop = (props) => {
   );
 }
 
-class CustomerList extends Component {
+class StudentList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          customers: [],
+          students: [],
           isLoading: true
 
         };
@@ -40,28 +40,28 @@ class CustomerList extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/customers')
+        fetch('/api/students')
             .then(response => response.json())
-            .then(data => this.setState({customers: data, isLoading: false}))
+            .then(data => this.setState({students: data, isLoading: false}))
 
     }
 
     async remove(id) {
-        await fetch(`/api/customer/${id}`, {
+        await fetch(`/api/student/${id}`, {
           method: 'DELETE',
           headers: {
             'Accept': 'application/json',
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedCustomers = [...this.state.customers].filter(i => i.customer_id !== id);
-          this.setState({customers: updatedCustomers});
+          let updatedStudents = [...this.state.students].filter(i => i.student_id !== id);
+          this.setState({students: updatedStudents});
         });
     }
 
     render() {
 
-      const {customers, isLoading} = this.state;
+      const {students, isLoading} = this.state;
 
 
       if(isLoading) {
@@ -69,17 +69,18 @@ class CustomerList extends Component {
       }
 
 
-      const customerList = customers.map(customer => {
-      return <tr key={customer.customer_id}>
-        <td style={{whiteSpace: 'nowrap'}}>{customer.customer_id}</td>
-        <td>{customer.first_name}</td>
-        <td>{customer.last_name}</td>
-        <td>{customer.phone_number}</td>
+      const studentList = students.map(student => {
+      return <tr key={student.student_id}>
+        <td style={{whiteSpace: 'nowrap'}}>{student.customer_id}</td>
+        <td>{student.first_name}</td>
+        <td>{student.last_name}</td>
+        <td>{student.phone_number}</td>
+        <td>{student.instrument_type_learning}</td>
 
         <td>
           <ButtonGroup>
-            <Button size="sm" color="primary" tag={Link} to={"/customer/" + customer.customer_id}>Edit</Button>
-            <Button size="sm" color="danger" onClick={() => this.remove(customer.customer_id)}>Delete</Button>
+            <Button size="sm" color="primary" tag={Link} to={"/student/" + student.customer_id}>Edit</Button>
+            <Button size="sm" color="danger" onClick={() => this.remove(student.customer_id)}>Delete</Button>
           </ButtonGroup>
         </td>
       </tr>
@@ -92,23 +93,24 @@ class CustomerList extends Component {
         <AppNavbar/>
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="customer/new">Add Customer</Button>
+            <Button color="success" tag={Link} to="student/new">Add student</Button>
           </div>
-          <h3>Customers</h3>
+          <h3>Students</h3>
        <Bdrop/>
 
           <Table className="mt-4">
             <thead>
             <tr>
-              <th width="15%">Customer ID</th>
+              <th width="15%">student ID</th>
               <th width="20%">First Name</th>
               <th width="20%">Last Name</th>
               <th width="20%">Phone Number</th>
+              <th width="20%">Instrument Learning</th>
               <th width="10%">Actions</th>
             </tr>
             </thead>
             <tbody>
-            {customerList}
+            {studentList}
             </tbody>
           </Table>
         </Container>
@@ -118,4 +120,4 @@ class CustomerList extends Component {
 
 }
 }
-export default CustomerList;
+export default StudentList;

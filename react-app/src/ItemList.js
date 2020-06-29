@@ -15,22 +15,23 @@ const Bdrop = (props) => {
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret>
-        Customer Types
+        Item Types
       </DropdownToggle>
       <DropdownMenu>
-			<Dropdown.Item href="/customers">All Customers</Dropdown.Item>
-			<Dropdown.Item href="/students">Students</Dropdown.Item>
+			<Dropdown.Item href="/items">All Items</Dropdown.Item>
+			<Dropdown.Item href="/instruments">Instruments</Dropdown.Item>
+      <Dropdown.Item href="/accessories">Accessories</Dropdown.Item>
       </DropdownMenu>
     </ButtonDropdown>
   );
 }
 
-class CustomerList extends Component {
+class ItemList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          customers: [],
+          items: [],
           isLoading: true
 
         };
@@ -40,28 +41,28 @@ class CustomerList extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/customers')
+        fetch('/api/items')
             .then(response => response.json())
-            .then(data => this.setState({customers: data, isLoading: false}))
+            .then(data => this.setState({items: data, isLoading: false}))
 
     }
 
     async remove(id) {
-        await fetch(`/api/customer/${id}`, {
+        await fetch(`/api/item/${id}`, {
           method: 'DELETE',
           headers: {
             'Accept': 'application/json',
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedCustomers = [...this.state.customers].filter(i => i.customer_id !== id);
-          this.setState({customers: updatedCustomers});
+          let updatedItems = [...this.state.items].filter(i => i.item_id !== id);
+          this.setState({items: updatedItems});
         });
     }
 
     render() {
 
-      const {customers, isLoading} = this.state;
+      const {items, isLoading} = this.state;
 
 
       if(isLoading) {
@@ -69,17 +70,18 @@ class CustomerList extends Component {
       }
 
 
-      const customerList = customers.map(customer => {
-      return <tr key={customer.customer_id}>
-        <td style={{whiteSpace: 'nowrap'}}>{customer.customer_id}</td>
-        <td>{customer.first_name}</td>
-        <td>{customer.last_name}</td>
-        <td>{customer.phone_number}</td>
+      const itemList = items.map(item => {
+      return <tr key={item.item_id}>
+        <td style={{whiteSpace: 'nowrap'}}>{item.item_id}</td>
+        <td>{item.name}</td>
+        <td>{item.brand}</td>
+        <td>{item.price}</td>
+        <td>{item.quantity}</td>
 
         <td>
           <ButtonGroup>
-            <Button size="sm" color="primary" tag={Link} to={"/customer/" + customer.customer_id}>Edit</Button>
-            <Button size="sm" color="danger" onClick={() => this.remove(customer.customer_id)}>Delete</Button>
+            <Button size="sm" color="primary" tag={Link} to={"/item/" + item.item_id}>Edit</Button>
+            <Button size="sm" color="danger" onClick={() => this.remove(item.item_id)}>Delete</Button>
           </ButtonGroup>
         </td>
       </tr>
@@ -92,23 +94,24 @@ class CustomerList extends Component {
         <AppNavbar/>
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="customer/new">Add Customer</Button>
+            <Button color="success" tag={Link} to="item/new">Add Item</Button>
           </div>
-          <h3>Customers</h3>
+          <h3>Items</h3>
        <Bdrop/>
 
           <Table className="mt-4">
             <thead>
             <tr>
-              <th width="15%">Customer ID</th>
-              <th width="20%">First Name</th>
-              <th width="20%">Last Name</th>
-              <th width="20%">Phone Number</th>
+              <th width="15%">Item ID</th>
+              <th width="20%">Name</th>
+              <th width="20%">Brand</th>
+              <th width="20%">Price</th>
+              <th width="20%">Quantity</th>
               <th width="10%">Actions</th>
             </tr>
             </thead>
             <tbody>
-            {customerList}
+            {itemList}
             </tbody>
           </Table>
         </Container>
@@ -118,4 +121,4 @@ class CustomerList extends Component {
 
 }
 }
-export default CustomerList;
+export default ItemList;
