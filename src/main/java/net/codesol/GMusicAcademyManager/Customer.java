@@ -19,32 +19,32 @@ import javax.persistence.Table;
    discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("C")
 public class Customer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customer_id;
 	private String first_name;
 	private String last_name;
 	private String phone_number;
-	
-	
-	
+
+
+
 	public Customer() {
-		
-	} 
-	
+
+	}
+
 	public Customer(Integer customer_id, String first_name, String last_name, String phone_number) {
 		this.customer_id = customer_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.phone_number = phone_number;
 	}
-	
+
 
 	public Integer getcustomer_id() {
 		return customer_id;
 	}
-	
+
 	public void setcustomer_id(Integer customer_id) {
 		this.customer_id = customer_id;
 	}
@@ -72,9 +72,9 @@ public class Customer {
 	public void setphone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

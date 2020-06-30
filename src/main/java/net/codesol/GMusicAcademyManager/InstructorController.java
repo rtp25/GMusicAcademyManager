@@ -26,10 +26,10 @@ public class InstructorController {
 		return service.listAll();
 	}
 	
-	@GetMapping("/instructor/{instructor_id}")
-	public ResponseEntity<Instructor> get(@PathVariable Integer instructor_id) {
+	@GetMapping("/instructor/{employee_id}")
+	public ResponseEntity<Instructor> get(@PathVariable Integer employee_id) {
 		try {
-			Instructor instructor = service.get(instructor_id);
+			Instructor instructor = service.get(employee_id);
 			return new ResponseEntity<Instructor>(instructor, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Instructor>(HttpStatus.NOT_FOUND);
@@ -37,16 +37,16 @@ public class InstructorController {
 		
 	}
 	
-	@PostMapping("/instructors")
+	@PostMapping("/instructor")
 	public void add(@RequestBody Instructor instructor) {
 		service.save(instructor);
 	}
 	
-	@PutMapping("/instructors/{instructor_id}")
-	public ResponseEntity<?> update(@RequestBody Instructor instructor, @PathVariable Integer instructor_id) {
+	@PutMapping("/instructor/{employee_id}")
+	public ResponseEntity<?> update(@RequestBody Instructor instructor, @PathVariable Integer employee_id) {
 		try {
 			// maybe save the existEmployee instead
-			Instructor existInstructor = service.get(instructor_id);
+			Instructor existInstructor = service.get(employee_id);
 			service.save(instructor);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
@@ -56,9 +56,9 @@ public class InstructorController {
 		
 	}
 	
-	@DeleteMapping("/instructors/{instructor_id}")
-	public void delete(@PathVariable Integer instructor_id) {
-	    service.delete(instructor_id);
+	@DeleteMapping("/instructor/{employee_id}")
+	public void delete(@PathVariable Integer employee_id) {
+	    service.delete(employee_id);
 	}
 
 }

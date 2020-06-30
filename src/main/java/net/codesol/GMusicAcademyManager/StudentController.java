@@ -19,48 +19,48 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class StudentController {
-	
+
 	@Autowired
 	private StudentService student_service;
-	
+
 	@GetMapping("/students")
 	public List<Student> list() {
 		return student_service.listAll();
 	}
-	
-	@GetMapping("/student/{student_id}")
-	public ResponseEntity<Student> get(@PathVariable Integer student_id) {
+
+	@GetMapping("/student/{customer_id}")
+	public ResponseEntity<Student> get(@PathVariable Integer customer_id) {
 		try {
-			Student student = student_service.get(student_id);
+			Student student = student_service.get(customer_id);
 			return new ResponseEntity<Student>(student, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@PostMapping("/students")
+
+	@PostMapping("/student")
 	public void add(@RequestBody Student student) {
 		student_service.save(student);
 	}
-	
-	@PutMapping("/students/{student_id}")
-	public ResponseEntity<?> update(@RequestBody Student student, @PathVariable Integer student_id) {
+
+	@PutMapping("/student/{customer_id}")
+	public ResponseEntity<?> update(@RequestBody Student student, @PathVariable Integer customer_id) {
 		try {
 			// maybe save the existstudent instead
-			Student existStudent = student_service.get(student_id);
+			Student existStudent = student_service.get(customer_id);
 			student_service.save(student);
 			return new ResponseEntity<>(HttpStatus.OK);
-			
+
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
-	
-	@DeleteMapping("/students/{student_id}")
-	public void delete(@PathVariable Integer student_id) {
-	    student_service.delete(student_id);
+
+	@DeleteMapping("/student/{customer_id}")
+	public void delete(@PathVariable Integer customer_id) {
+	    student_service.delete(customer_id);
 	}
 
 }

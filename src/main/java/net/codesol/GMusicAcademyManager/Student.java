@@ -6,15 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity 
+@Entity
 @DiscriminatorValue("S")
 public class Student extends Customer{
 	private String instrument_type_learning;
-	
+
 	public Student() {
-		
+
 	}
-	
+
 	public Student(Integer studentId, String firstName, String lastName, String phoneNumber, String intrumentTypeLearning) {
 		super(studentId, firstName, lastName, phoneNumber);
 		this.instrument_type_learning = intrumentTypeLearning;
@@ -27,6 +27,6 @@ public class Student extends Customer{
 	public void setinstrument_type_learning(String instrument_type_learning) {
 		this.instrument_type_learning = instrument_type_learning;
 	}
-	
-	
+
+
 }

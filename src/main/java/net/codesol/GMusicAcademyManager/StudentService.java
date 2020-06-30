@@ -8,24 +8,24 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class StudentService {
-	
+
 	@Autowired
 	private StudentRepository student_repo;
-	
+
 	public List<Student> listAll() {
 		return student_repo.findAll();
 	}
-	
+
 	public Student save(Student student) {
 		 return student_repo.save(student);
 	}
-	
-	public Student get(Integer student_id) {
-		return student_repo.findById(student_id).get();
+
+	public Student get(Integer customer_id) {
+		return student_repo.findById(customer_id).get();
 	}
-	
-	public void delete(Integer student_id) {
-		student_repo.deleteById(student_id);
+
+	public void delete(Integer customer_id) {
+		student_repo.deleteById(customer_id);
 	}
 
 }

@@ -14,7 +14,7 @@ const Bdrop = (props) => {
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret>
-        Button Dropdown
+        Employee Types
       </DropdownToggle>
       <DropdownMenu>
 			<Dropdown.Item href="/employees">All Employees</Dropdown.Item>
@@ -54,7 +54,7 @@ class SalesmanList extends Component{
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedSalesmen = [...this.state.salesmen].filter(i => i.salesman_id !== id);
+          let updatedSalesmen = [...this.state.salesmen].filter(i => i.employee_id !== id);
           this.setState({salesmen: updatedSalesmen});
         });
     }
@@ -78,8 +78,8 @@ class SalesmanList extends Component{
 
         <td>
           <ButtonGroup>
-            <Button size="sm" color="primary" tag={Link} to={"/salesman/" + salesman.salesman_id}>Edit</Button>
-            <Button size="sm" color="danger" onClick={() => this.remove(salesman.salesman_id)}>Delete</Button>
+            <Button size="sm" color="primary" tag={Link} to={"/salesman/" + salesman.employee_id}>Edit</Button>
+            <Button size="sm" color="danger" onClick={() => this.remove(salesman.employee_id)}>Delete</Button>
           </ButtonGroup>
         </td>
       </tr>

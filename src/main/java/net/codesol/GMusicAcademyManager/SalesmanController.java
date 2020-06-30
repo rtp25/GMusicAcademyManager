@@ -27,10 +27,10 @@ public class SalesmanController {
 		return service.listAll();
 	}
 	
-	@GetMapping("/salesman/{salesman_id}")
-	public ResponseEntity<Salesman> get(@PathVariable Integer salesman_id) {
+	@GetMapping("/salesman/{employee_id}")
+	public ResponseEntity<Salesman> get(@PathVariable Integer employee_id) {
 		try {
-			Salesman salesman = service.get(salesman_id);
+			Salesman salesman = service.get(employee_id);
 			return new ResponseEntity<Salesman>(salesman, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Salesman>(HttpStatus.NOT_FOUND);
@@ -38,16 +38,16 @@ public class SalesmanController {
 		
 	}
 	
-	@PostMapping("/salesmen")
+	@PostMapping("/salesman")
 	public void add(@RequestBody Salesman salesman) {
 		service.save(salesman);
 	}
 	
-	@PutMapping("/salesmen/{salesman_id}")
-	public ResponseEntity<?> update(@RequestBody Salesman salesman, @PathVariable Integer salesman_id) {
+	@PutMapping("/salesman/{employee_id}")
+	public ResponseEntity<?> update(@RequestBody Salesman salesman, @PathVariable Integer employee_id) {
 		try {
 			// maybe save the existsalesman instead
-			Salesman existSalesman = service.get(salesman_id);
+			Salesman existSalesman = service.get(employee_id);
 			service.save(salesman);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
@@ -57,9 +57,9 @@ public class SalesmanController {
 		
 	}
 	
-	@DeleteMapping("/salesmen/{salesman_id}")
-	public void delete(@PathVariable Integer salesman_id) {
-	    service.delete(salesman_id);
+	@DeleteMapping("/salesman/{employee_id}")
+	public void delete(@PathVariable Integer employee_id) {
+	    service.delete(employee_id);
 	}
 	
 }

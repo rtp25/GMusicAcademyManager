@@ -54,7 +54,7 @@ class InstructorList extends Component{
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedInstructors = [...this.state.instructors].filter(i => i.instructor_id !== id);
+          let updatedInstructors = [...this.state.instructors].filter(i => i.employee_id !== id);
           this.setState({instructors: updatedInstructors});
         });
     }
@@ -78,8 +78,8 @@ class InstructorList extends Component{
 
         <td>
           <ButtonGroup>
-          <Button size="sm" color="primary" tag={Link} to={"/instructor/" + instructor.instructor_id}>Edit</Button>
-            <Button size="sm" color="danger" onClick={() => this.remove(instructor.instructor_id)}>Delete</Button>
+          <Button size="sm" color="primary" tag={Link} to={"/instructor/" + instructor.employee_id}>Edit</Button>
+            <Button size="sm" color="danger" onClick={() => this.remove(instructor.employee_id)}>Delete</Button>
           </ButtonGroup>
         </td>
       </tr>

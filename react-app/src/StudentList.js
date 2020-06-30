@@ -54,7 +54,7 @@ class StudentList extends Component {
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedStudents = [...this.state.students].filter(i => i.student_id !== id);
+          let updatedStudents = [...this.state.students].filter(i => i.customer_id !== id);
           this.setState({students: updatedStudents});
         });
     }
