@@ -14,7 +14,7 @@ const Bdrop = (props) => {
 
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
+      <DropdownToggle caret color = "info">
        Item Types
       </DropdownToggle>
       <DropdownMenu>
@@ -55,8 +55,8 @@ class InstrumentList extends Component {
             'Content-type': 'application/json'
           }
         }).then(() => {
-          let updatedinstruments = [...this.state.instruments].filter(i => i.instrument_id !== id);
-          this.setState({instruments: updatedinstruments});
+          let updatedInstruments = [...this.state.instruments].filter(i => i.item_id !== id);
+          this.setState({instruments: updatedInstruments});
         });
     }
 

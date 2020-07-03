@@ -20,12 +20,12 @@ public class InstrumentService {
 		 return instrument_repo.save(instrument);
 	}
 	
-	public Instrument get(Integer instrument_id) {
-		return instrument_repo.findById(instrument_id).get();
+	public Instrument get(Integer item_id) {
+		return instrument_repo.findById(item_id).get();
 	}
 	
-	public void delete(Integer instrument_id) {
-		instrument_repo.deleteById(instrument_id);
+	public void delete(Integer item_id) {
+		instrument_repo.deleteById(item_id);
 	}
 
 }

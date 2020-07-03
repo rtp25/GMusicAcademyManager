@@ -71,7 +71,7 @@ class TransactionList extends Component {
           <div className="float-right">
             <Button color="success" tag={Link} to="transaction/new">Add Transaction</Button>
           </div>
-          <h3>GMusicAcademy Management System</h3>
+          <h3>Transactions</h3>
           <Table className="mt-4">
             <thead>
             <tr>

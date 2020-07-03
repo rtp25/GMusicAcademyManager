@@ -40,14 +40,14 @@ public class TransactionController {
 		
 	}
 	
-	@PostMapping("/transactions")
+	@PostMapping("/transaction")
 	public void add(@RequestBody Transaction transaction) {
 		float item_total_cost = item_service.getItemPrice(transaction.getitem_id());
 		transaction.calculatetotal_cost(item_total_cost);
 		transaction_service.save(transaction);
 	}
 	
-	@PutMapping("/transactions/{transaction_id}")
+	@PutMapping("/transaction/{transaction_id}")
 	public ResponseEntity<?> update(@RequestBody Transaction transaction, @PathVariable Integer transaction_id) {
 		try {
 			// maybe save the existtransaction instead
@@ -63,7 +63,7 @@ public class TransactionController {
 		
 	}
 	
-	@DeleteMapping("/transactions/{transaction_id}")
+	@DeleteMapping("/transaction/{transaction_id}")
 	public void delete(@PathVariable Integer transaction_id) {
 	    transaction_service.delete(transaction_id);
 	}

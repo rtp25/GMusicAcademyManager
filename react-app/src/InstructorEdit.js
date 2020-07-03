@@ -55,7 +55,7 @@ class InstructorEdit extends Component {
 
   render() {
     const{instructorEntry} = this.state;
-    const title = <h2>{instructorEntry.employee_id ? 'Edit Instructor' : 'Add Instructor'}</h2>;
+    const title = <h2>{instructorEntry.em_id ? 'Edit Instructor' : 'Add Instructor'}</h2>;
 
     return <div>
       <AppNavbar/>

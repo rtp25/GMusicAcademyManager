@@ -27,10 +27,10 @@ public class AccessoryController {
 		return accessory_service.listAll();
 	}
 	
-	@GetMapping("/accessory/{accessory_id}")
-	public ResponseEntity<Accessory> get(@PathVariable Integer accessory_id) {
+	@GetMapping("/accessory/{item_id}")
+	public ResponseEntity<Accessory> get(@PathVariable Integer item_id) {
 		try {
-			Accessory accessory = accessory_service.get(accessory_id);
+			Accessory accessory = accessory_service.get(item_id);
 			return new ResponseEntity<Accessory>(accessory, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Accessory>(HttpStatus.NOT_FOUND);
@@ -38,16 +38,16 @@ public class AccessoryController {
 		
 	}
 	
-	@PostMapping("/accessories")
+	@PostMapping("/accessory")
 	public void add(@RequestBody Accessory accessory) {
 		accessory_service.save(accessory);
 	}
 	
-	@PutMapping("/accessories/{accessory_id}")
-	public ResponseEntity<?> update(@RequestBody Accessory accessory, @PathVariable Integer accessory_id) {
+	@PutMapping("/accessory/{item_id}")
+	public ResponseEntity<?> update(@RequestBody Accessory accessory, @PathVariable Integer item_id) {
 		try {
 			// maybe save the existaccessory instead
-			Accessory existAccessory = accessory_service.get(accessory_id);
+			Accessory existAccessory = accessory_service.get(item_id);
 			accessory_service.save(accessory);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
@@ -57,9 +57,9 @@ public class AccessoryController {
 		
 	}
 	
-	@DeleteMapping("/accessories/{accessory_id}")
-	public void delete(@PathVariable Integer accessory_id) {
-	    accessory_service.delete(accessory_id);
+	@DeleteMapping("/accessory/{item_id}")
+	public void delete(@PathVariable Integer item_id) {
+	    accessory_service.delete(item_id);
 	}
 	
 

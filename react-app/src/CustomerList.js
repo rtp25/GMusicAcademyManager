@@ -14,7 +14,7 @@ const Bdrop = (props) => {
 
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
+      <DropdownToggle caret color = "info">
         Customer Types
       </DropdownToggle>
       <DropdownMenu>

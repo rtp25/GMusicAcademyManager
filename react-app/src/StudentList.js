@@ -14,7 +14,7 @@ const Bdrop = (props) => {
 
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
+      <DropdownToggle caret color = "info">
         Customer Types
       </DropdownToggle>
       <DropdownMenu>
@@ -93,7 +93,7 @@ class StudentList extends Component {
         <AppNavbar/>
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="student/new">Add student</Button>
+            <Button color="success" tag={Link} to="student/new">Add Student</Button>
           </div>
           <h3>Students</h3>
        <Bdrop/>
@@ -101,11 +101,11 @@ class StudentList extends Component {
           <Table className="mt-4">
             <thead>
             <tr>
-              <th width="15%">student ID</th>
+              <th width="15%">Student ID</th>
               <th width="20%">First Name</th>
               <th width="20%">Last Name</th>
               <th width="20%">Phone Number</th>
-              <th width="20%">Instrument Learning</th>
+              <th width="20%">Instrument Type Learning</th>
               <th width="10%">Actions</th>
             </tr>
             </thead>

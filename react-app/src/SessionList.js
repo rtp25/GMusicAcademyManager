@@ -69,9 +69,9 @@ class SessionList extends Component {
         <AppNavbar/>
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="session/new">Add session</Button>
+            <Button color="success" tag={Link} to="session/new">Add Session</Button>
           </div>
-          <h3>GMusicAcademy Management System</h3>
+          <h3>Sessions</h3>
           <Table className="mt-4">
             <thead>
             <tr>

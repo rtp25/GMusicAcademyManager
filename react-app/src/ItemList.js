@@ -14,7 +14,7 @@ const Bdrop = (props) => {
 
   return (
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
+      <DropdownToggle caret color = "info">
         Item Types
       </DropdownToggle>
       <DropdownMenu>
@@ -93,9 +93,7 @@ class ItemList extends Component {
       <div>
         <AppNavbar/>
         <Container fluid>
-          <div className="float-right">
-            <Button color="success" tag={Link} to="item/new">Add Item</Button>
-          </div>
+
           <h3>Items</h3>
        <Bdrop/>
 

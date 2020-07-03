@@ -12,8 +12,8 @@ const Bdrop = (props) => {
   const toggle = () => setOpen(!dropdownOpen);
 
   return (
-    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
+    <ButtonDropdown  isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret color = "info">
         Employee Types
       </DropdownToggle>
       <DropdownMenu>
@@ -89,9 +89,7 @@ class EmployeeList extends Component{
       <div>
         <AppNavbar/>
         <Container fluid>
-          <div className="float-right">
-            <Button color="success" tag={Link} to="employee/new">Add employee</Button>
-          </div>
+
           <h3>Employees</h3>
           <Bdrop/>
           <Table className="mt-4">

@@ -10,13 +10,17 @@ import CustomerEdit from './CustomerEdit';
 import EmployeeEdit from './EmployeeEdit';
 import SalesmanEdit from './SalesmanEdit';
 import SessionList from './SessionList';
+import SessionEdit from './SessionEdit';
 import TransactionList from './TransactionList';
+import TransactionEdit from './TransactionEdit';
 import SalesmanList from './SalesmanList';
 import InstructorList from './InstructorList';
 import InstructorEdit from './InstructorEdit';
 import ItemList from './ItemList';
 import InstrumentList from './InstrumentList';
+import InstrumentEdit from './InstrumentEdit';
 import AccessoryList from './AccessoryList';
+import AccessoryEdit from './AccessoryEdit';
 
 
 class App extends Component {
@@ -36,11 +40,14 @@ class App extends Component {
           <Route path='/salesman/:id'  component={SalesmanEdit}/>
           <Route path='/employee/:id' component={EmployeeEdit}/>
           <Route path='/sessions' exact={true} component={SessionList}/>
+          <Route path='/session/:id' component={SessionEdit}/>
           <Route path='/transactions' exact={true} component={TransactionList}/>
+          <Route path='/transaction/:id' component={TransactionEdit}/>
           <Route path='/items' exact={true} component={ItemList}/>
           <Route path='/instruments' exact={true} component={InstrumentList}/>
+          <Route path='/instrument/:id' component={InstrumentEdit}/>
           <Route path='/accessories' exact={true} component={AccessoryList}/>
-
+          <Route path='/accessory/:id' component={AccessoryEdit}/>
         </Switch>
       </Router>
     )

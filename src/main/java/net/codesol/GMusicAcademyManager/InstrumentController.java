@@ -27,10 +27,10 @@ public class InstrumentController {
 		return instrument_service.listAll();
 	}
 	
-	@GetMapping("/instrument/{instrument_id}")
-	public ResponseEntity<Instrument> get(@PathVariable Integer instrument_id) {
+	@GetMapping("/instrument/{item_id}")
+	public ResponseEntity<Instrument> get(@PathVariable Integer item_id) {
 		try {
-			Instrument instrument = instrument_service.get(instrument_id);
+			Instrument instrument = instrument_service.get(item_id);
 			return new ResponseEntity<Instrument>(instrument, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Instrument>(HttpStatus.NOT_FOUND);
@@ -38,16 +38,16 @@ public class InstrumentController {
 		
 	}
 	
-	@PostMapping("/instruments")
+	@PostMapping("/instrument")
 	public void add(@RequestBody Instrument instrument) {
 		instrument_service.save(instrument);
 	}
 	
-	@PutMapping("/instruments/{instrument_id}")
-	public ResponseEntity<?> update(@RequestBody Instrument instrument, @PathVariable Integer instrument_id) {
+	@PutMapping("/instrument/{item_id}")
+	public ResponseEntity<?> update(@RequestBody Instrument instrument, @PathVariable Integer item_id) {
 		try {
 			// maybe save the existInstrument instead
-			Instrument existInstrument = instrument_service.get(instrument_id);
+			Instrument existInstrument = instrument_service.get(item_id);
 			instrument_service.save(instrument);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
@@ -57,9 +57,9 @@ public class InstrumentController {
 		
 	}
 	
-	@DeleteMapping("/instruments/{instrument_id}")
-	public void delete(@PathVariable Integer instrument_id) {
-	    instrument_service.delete(instrument_id);
+	@DeleteMapping("/instrument/{item_id}")
+	public void delete(@PathVariable Integer item_id) {
+	    instrument_service.delete(item_id);
 	}
 
 }
