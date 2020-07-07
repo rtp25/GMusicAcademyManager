@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: 750,
     margin: 'auto',
-
   },
   butt: {
     padding: theme.spacing(5),
