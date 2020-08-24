@@ -23,6 +23,9 @@ public class SessionController {
 
 	@Autowired
 	private SessionService session_service;
+	
+	@Autowired
+	private OperationsController ops_control;
 
 	@GetMapping("/sessions")
 	public List<Session> list() {
@@ -41,8 +44,20 @@ public class SessionController {
 	}
 
 	@PostMapping("/session")
-	public void add(@RequestBody Session session) {
-		session_service.save(session);
+	public ResponseEntity<?> add(@RequestBody Session session)   {
+		
+		if(ops_control.processSession(session)) {
+			session_service.save(session);
+			System.out.println("Successful session added!!!!!");
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+			
+		else {
+			System.out.println("Invalid Session Creation Attempted");
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+			
+			
 	}
 
 	@PutMapping("/session/{session_id}")

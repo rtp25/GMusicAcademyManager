@@ -31,6 +31,8 @@ public class SessionService {
 	public void delete(Integer session_id) {
 		session_repo.deleteById(session_id);
 	}
+	
+
 
 
 }
